@@ -17,10 +17,11 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
     App.post()
+
   },
   
   post: function(callback = ()=>{}) {
-    Parse.create({'this': 'take my horse to the old town road'}
+    Parse.create(Messages
     , (data) => {
       console.log(data);
       
@@ -31,8 +32,10 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
-
+      console.log(data); //data is the big object with property result
+      for(var i = 0; i < data.results.length; i++){
+        MessagesView.renderMessage(data.results[i]);
+      }
       callback();
     });
   },
@@ -46,4 +49,6 @@ var App = {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }
+
+  // App.initialize();
 };

@@ -7,7 +7,7 @@ var MessagesView = {
 
   renderMessage: function(message) {
     //this.$chats.append(`<div>${message.username}</div>`)
-    this.$chats.append(`<div class='username'>${message.username}: ${message.text}</div>`);
+    this.$chats.prepend(`<div class='username'>${message.username}: ${message.text}</div>`);
     $('.username').click(Friends.toggleStatus);
   }
   
