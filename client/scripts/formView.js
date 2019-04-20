@@ -14,14 +14,10 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     //this is what will add to our form
-    //FormView.setStatus(true);
     console.log(this.$form);
     Messages.text = $('#message').val();
-    
     MessagesView.renderMessage(Messages);
-    
-    //if setStatus === true, Messages = input from type=submit
-    
+    App.post();
     console.log('clicky cliky!');
   },
 

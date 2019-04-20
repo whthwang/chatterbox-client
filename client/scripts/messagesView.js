@@ -6,22 +6,11 @@ var MessagesView = {
   },
 
   renderMessage: function(message) {
-    //this.$chats.append(`<div>${message.username}</div>`)
-    this.$chats.prepend(`<div class='username'>${message.username}: ${message.text}</div>`);
-    $('.username').click(Friends.toggleStatus);
+    this.$chats.prepend(`<div class='${message.username}' onclick='Friends.toggleStatus(this);'>${message.username}: ${message.text}</div>`);
+    //$('div').click(Friends.toggleStatus());
+    console.log(this);
   }
   
 };
 
 
-/*
-
-var message = {
-  username: 'Mel Brooks',
-  text: 'Never underestimate the power of the Schwartz!',
-  roomname: 'lobby'
-};
-MessagesView.renderMessage(message);
-expect($('#chats').children().length).to.equal(1);
-
-*/

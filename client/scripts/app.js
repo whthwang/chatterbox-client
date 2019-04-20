@@ -8,15 +8,16 @@ var App = {
 
   initialize: function() {
     App.username = window.location.search.substr(10);
-
+    
+    MessagesView.initialize();
     FormView.initialize();
     RoomsView.initialize();
-    MessagesView.initialize();
+    
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    App.post()
+    //App.post();
 
   },
   
@@ -33,7 +34,7 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data); //data is the big object with property result
-      for(var i = 0; i < data.results.length; i++){
+      for(var i = data.results.length - 1; i >= 0; i--){
         MessagesView.renderMessage(data.results[i]);
       }
       callback();

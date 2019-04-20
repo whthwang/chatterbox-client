@@ -1,29 +1,22 @@
 //$('.username').click(Friends.toggleStatus);
 
 var Friends = {  
-  
-  toggleStatus: function () {
+  friendStatus: false,
+  toggleStatus: function (param) {
+    if(!this.friendStatus){
+      $(param).css('background-color', 'aquamarine');
+      console.log('friend on');
+      this.friendStatus = true;
+      return true;
+    } else{
+      $(param).css('background-color', 'white');
+      this.friendStatus = false;
+      console.log('friend off');
+      return false;
+    } 
     
-    return true;  
+    //return true;
   },
 
 };
 
-
-/*
-
-sinon.spy(Friends, 'toggleStatus');
-App.initialize();
-MessagesView.renderMessage({
-  username: 'Mel Brooks',
-  text: 'I didn\'t get a harumph outa that guy.!',
-  roomname: 'lobby'
-});
-$('#chats').find('.username').trigger('click');
-expect(Friends.toggleStatus.called).to.be.true;
-Friends.toggleStatus.restore();
-
-
-Friends.toggleStatus.called is false
-
-*/
