@@ -1,3 +1,5 @@
+//
+
 var App = {
 
   $spinner: $('.spinner img'),
@@ -14,8 +16,17 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    App.post()
   },
+  
+  post: function(callback = ()=>{}) {
+    Parse.create({'this': 'take my horse to the old town road'}
+    , (data) => {
+      console.log(data);
+      
+      callback();
+    });
+  },  
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
